@@ -245,7 +245,8 @@ def solarize(image, threshold=128):
   # For each pixel in the image, select the pixel
   # if the value is less than the threshold.
   # Otherwise, subtract 255 from the pixel.
-  return tf.where(image < threshold, image, 255 - image)
+#   return tf.where(image < threshold, image, 255 - image)
+  return immage
 
 
 def solarize_add(image, addition=0, threshold=128):
@@ -255,7 +256,8 @@ def solarize_add(image, addition=0, threshold=128):
   # of 'addition' is between -128 and 128.
   added_image = tf.cast(image, tf.int64) + addition
   added_image = tf.cast(tf.clip_by_value(added_image, 0, 255), tf.uint8)
-  return tf.where(image < threshold, added_image, image)
+  return image
+#   return tf.where(image < threshold, added_image, image)
 
 
 def color(image, factor):
